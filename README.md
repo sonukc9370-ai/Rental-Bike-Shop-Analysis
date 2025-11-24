@@ -63,6 +63,15 @@ erDiagram
     }
 ```
 
+## 🛠️ Tech Stack
+* **Database:** MySQL
+* **Concepts Used:** * **DDL/DML:** Table creation and data insertion.
+    * **Aggregations:** `GROUP BY`, `COUNT`, `SUM`.
+    * **Complex Logic:** `CASE` statements for pricing and pivoting.
+    * **Joins:** `LEFT JOIN` to include customers with zero rentals.
+    * **CTEs:** For readable segmentation logic.
+
+
 ## 🔍 Analysis Highlights
 
 ### 1. 🏷️ Seasonal Pricing Strategy
@@ -190,10 +199,3 @@ ORDER BY membership_count DESC;
 3.  **Run Analysis:**
     * Execute `solution.sql` to generate the insights and reports.
 
-## 🛠️ Tech Stack
-* **Database:** MySQL
-* **Concepts Used:** * **DDL/DML:** Table creation and data insertion.
-    * **Aggregations:** `GROUP BY`, `COUNT`, `SUM`.
-    * **Complex Logic:** `CASE` statements for pricing and pivoting.
-    * **Joins:** `LEFT JOIN` to include customers with zero rentals.
-    * **CTEs:** For readable segmentation logic.
