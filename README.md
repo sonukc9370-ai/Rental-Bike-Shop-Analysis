@@ -181,7 +181,7 @@ ORDER BY membership_count DESC;
 
 1.  **Clone the Repository:**
     ```bash
-    git clone [https://github.com/yourusername/bike-shop-analysis.git](https://github.com/yourusername/bike-shop-analysis.git)
+    git clone https://github.com/sonukc9370-ai/Rental-Bike-Shop-Analysis.git
     ```
 2.  **Initialize Database:**
     * Open your SQL client (MySQL Workbench, DBeaver, etc.).
