@@ -2,7 +2,6 @@
 
 ![SQL](https://img.shields.io/badge/Language-SQL-blue)
 ![Database](https://img.shields.io/badge/Database-MySQL-orange)
-![Status](https://img.shields.io/badge/Status-Completed-success)
 
 ## 📌 Project Overview
 This project analyzes the database of a bike rental shop to help the owner optimize inventory, design pricing strategies, and track revenue streams. The repository contains the full database schema, sample data, and advanced SQL analysis scripts.
@@ -131,6 +130,52 @@ SELECT
 FROM bike 
 GROUP BY Category;
 ```
+
+## 📑 Additional Financial Reports
+<details>
+<summary><strong>Click to expand: Rental Revenue Report (Rollup)</strong></summary>
+This query generates a comprehensive sales report showing total revenue from rentals by Month, Year, and a Grand Total across all years using <code>UNION ALL</code> for manual rollups.
+
+```SQL
+SELECT 
+    YEAR(start_timestamp) As Year,
+    MONTH(start_timestamp) As Month,
+    SUM(total_paid) as Total_revenue
+FROM rental
+GROUP BY Year, Month
+UNION ALL
+SELECT 
+    YEAR(start_timestamp) As Year,
+    NULL As Month,
+    SUM(total_paid) as Total_revenue
+FROM rental
+GROUP BY Year
+UNION ALL
+SELECT 
+    NULL As Year,
+    NULL As Month,
+    SUM(total_paid) as Total_revenue
+FROM rental
+ORDER BY (Year IS NULL), Year;
+```
+</details>
+
+<details> 
+<summary><strong>Click to expand: Customer Membership Counts</strong></summary>
+This query lists all customers and the number of memberships they have purchased, ensuring customers with 0 purchases are still listed (using <code>LEFT JOIN</code>).
+
+```SQL
+SELECT
+    c.name,
+    COUNT(m.membership_type_id) As membership_count
+FROM customer c 
+LEFT JOIN membership m ON c.id = m.customer_id
+GROUP BY c.name 
+ORDER BY membership_count DESC;
+```
+</details>
+
+
 
 ## 🚀 How to Run
 
